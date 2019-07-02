@@ -10,7 +10,7 @@ export default class LaunchScreen extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.navigation.navigate("PokedexListScreen");
-    }, 2000);
+    }, 1500);
   }
 
   render () {

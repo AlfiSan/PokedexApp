@@ -1,24 +1,40 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types';
-import { View, Text } from 'react-native'
+
+// COMPONENTS
+import { Text, View, FlatList, TouchableOpacity ,Image } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Images, Colors } from '../Themes/index';
+
+// STYLES
 import styles from './Styles/PokedexBasicInfoStyle'
 
 export default class PokedexBasicInfo extends Component {
-  // // Prop type warnings
-  // static propTypes = {
-  //   someProperty: PropTypes.object,
-  //   someSetting: PropTypes.bool.isRequired,
-  // }
-  //
-  // // Defaults for props
-  // static defaultProps = {
-  //   someSetting: false
-  // }
 
   render () {
+    const {dataPokemon, onPress} = this.props;
     return (
       <View style={styles.container}>
-        <Text>PokedexBasicInfo Component</Text>
+        <FlatList
+          data={dataPokemon}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity 
+                underlayColor={'#ddd'}
+                onPress={() => onPress(item.name)}  >
+                <View style={styles.list}>
+                  <Text style={styles.textName}> {item.name} </Text>
+                  <Icon
+                    style={styles.iconStyle}
+                    name='chevron-right'
+                    size={20}
+                    color='#000000'
+                  />;
+                </View>
+              </TouchableOpacity>
+            )
+          }}
+        />
       </View>
     )
   }

@@ -11,22 +11,33 @@
 *************************************************************/
 
 import { call, put } from 'redux-saga/effects'
+import { ToastAndroid } from 'react-native';
 import GetListActions from '../Redux/GetListRedux'
 // import { GetListSelectors } from '../Redux/GetListRedux'
 
-export function * getGetList (api, action) {
+export function * getPokemonList (api, action) {
   const { data } = action
   // get current data from Store
   // const currentData = yield select(GetListSelectors.getData)
   // make the call to the api
-  const response = yield call(api.getgetList, data)
+  try {
+    const response = yield call(api.getPokemon, data)
 
-  // success?
-  if (response.ok) {
-    // You might need to change the response here - do this with a 'transform',
-    // located in ../Transforms/. Otherwise, just pass the data back from the api.
-    yield put(GetListActions.getListSuccess(response.data))
-  } else {
+    // success?
+    if (response.ok) {
+      // You might need to change the response here - do this with a 'transform',
+      // located in ../Transforms/. Otherwise, just pass the data back from the api.
+      yield put(GetListActions.getListSuccess(response.data))
+    } else {
+      ToastAndroid.show('Maaf terjadi kesalahan pada server',
+        ToastAndroid.SHORT
+      );
+      yield put(GetListActions.getListFailure())
+    }
+  } catch (error) {
+    ToastAndroid.show('Waktu habis, Maaf terjadi kesalahan',
+      ToastAndroid.SHORT
+    );
     yield put(GetListActions.getListFailure())
   }
 }

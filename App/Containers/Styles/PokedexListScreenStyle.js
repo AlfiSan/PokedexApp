@@ -1,6 +1,5 @@
-import { StyleSheet, Dimensions} from 'react-native';
-import { Colors, Fonts } from '../../../Themes/index';
-const { width, height } = Dimensions.get('window')
+import { StyleSheet} from 'react-native';
+import { Colors } from '../../Themes/index';
 
 export default StyleSheet.create({
   container: {
@@ -10,16 +9,16 @@ export default StyleSheet.create({
     justifyContent: 'flex-start'
   },
   viewTitle:{
-    margin: 16,
     justifyContent: 'center',
-    padding: 10,
+    paddingTop: 32,
+    paddingBottom: 24,
     alignItems: 'center'
   },
   titleText:{
-    textAlign: 'left',
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: '500',
     color: Colors.black,
-    paddingRight: 8,
-    lineHeight: 24
   },
   loading: {
     position: 'absolute',

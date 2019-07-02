@@ -4,14 +4,12 @@ import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
 
 /* ------------- Types ------------- */
-
-import { StartupTypes } from '../Redux/StartupRedux'
-import { GithubTypes } from '../Redux/GithubRedux'
-
+import { GetListTypes } from '../Redux/GetListRedux'
+import { GetDetailsTypes } from '../Redux/GetDetailsRedux'
 /* ------------- Sagas ------------- */
 
-import { startup } from './StartupSagas'
-import { getUserAvatar } from './GithubSagas'
+import { getPokemonList } from './GetListSagas'
+import { getPokemonDetails } from './GetDetailsSagas'
 
 /* ------------- API ------------- */
 
@@ -23,10 +21,10 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 
 export default function * root () {
   yield all([
-    // some sagas only receive an action
-    takeLatest(StartupTypes.STARTUP, startup),
+    // get pokemon list from action request redux
+    takeLatest(GetListTypes.GET_LIST_REQUEST, getPokemonList, api),
 
-    // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    // get pokemon details from action request redux
+    takeLatest(GetDetailsTypes.GET_DETAILS_REQUEST, getPokemonDetails, api)
   ])
 }
