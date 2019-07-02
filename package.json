@@ -75,7 +75,8 @@
     "reactotron-redux": "^2.1.0",
     "reactotron-redux-saga": "^2.1.0",
     "snazzy": "^8.0.0",
-    "standard": "10.0.2"
+    "standard": "10.0.2",
+    "remote-redux-devtools": "^0.5.16"
   },
   "jest": {
     "testMatch": [
