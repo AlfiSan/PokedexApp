@@ -1,10 +1,12 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
+import PokedexListScreen from '../Containers/PokedexListScreen'
 import LaunchScreen from '../Containers/LaunchScreen'
 
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
+  PokedexListScreen: { screen: PokedexListScreen },
   LaunchScreen: { screen: LaunchScreen }
 }, {
   // Default config for all screens
