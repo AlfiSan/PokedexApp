@@ -89,26 +89,29 @@ class PokedexListScreen extends Component {
   }
 
   getMorePokemon = event => {
-   
+    let {idFilter} = this.state;
     let paramsOffset = this.state.defaultParams.offset + 20;
     let params = {offset: paramsOffset, limit: 20}
-    scrollOffset = Number(
-      (
-        event.nativeEvent.layoutMeasurement.height +
-        event.nativeEvent.contentOffset.y
-      ).toFixed(1)
-    );
-    scrollHeight = Number(event.nativeEvent.contentSize.height.toFixed(1));
-    // 200 its depends on activity indicator
-    scrollHeight = scrollHeight - 200;
 
-    if (scrollOffset < scrollHeight) {
-      return;
+    if(idFilter === 5){
+      scrollOffset = Number(
+        (
+          event.nativeEvent.layoutMeasurement.height +
+          event.nativeEvent.contentOffset.y
+        ).toFixed(1)
+      );
+      scrollHeight = Number(event.nativeEvent.contentSize.height.toFixed(1));
+      // 200 its depends on activity indicator
+      scrollHeight = scrollHeight - 200;
+
+      if (scrollOffset < scrollHeight) {
+        return;
+      }
+      this.setState(
+        (state) => Immutable.set(state, "defaultParams", params),
+        () => {this.props.dispatch(GetListAction.getListRequest(this.state.defaultParams, true, false))}
+      );
     }
-    this.setState(
-      (state) => Immutable.set(state, "defaultParams", params),
-      () => {this.props.dispatch(GetListAction.getListRequest(this.state.defaultParams, true, false))}
-    );
   };
 
   getRefreshList = () => {
