@@ -15,7 +15,6 @@ export default StyleSheet.create({
     height: 55,
     alignItems: 'center',
     backgroundColor: Colors.white, 
-    paddingLeft: 16,
     borderBottomWidth: 0,
     elevation: 2,           
   },
@@ -27,7 +26,9 @@ export default StyleSheet.create({
   },
   viewTitle:{
     justifyContent: 'center',
-    padding: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+    width: Dimensions.get('window').width,
     alignItems: 'center'
   },
   titleText:{
@@ -35,6 +36,8 @@ export default StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     color: Colors.black,
+    alignSelf: 'center',
+    alignItems: 'center'
   },
   loading: {
     position: 'absolute',

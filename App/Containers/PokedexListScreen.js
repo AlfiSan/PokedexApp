@@ -140,7 +140,7 @@ class PokedexListScreen extends Component {
         <View style={styles.header}>
           <View style={styles.viewTitle}>
             <Text style={styles.titleText}>
-              Pokemon
+              Pokedex
             </Text>
           </View>
           <TouchableOpacity style={styles.filterIcon} onPress={() => this.openModalFilter()}>
