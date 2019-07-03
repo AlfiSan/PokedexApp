@@ -10,6 +10,10 @@ import styles from './Styles/PokedexBasicInfoStyle'
 
 export default class PokedexBasicInfo extends Component {
 
+  Capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   render () {
     const {dataPokemon, onPress} = this.props;
     return (
@@ -23,13 +27,13 @@ export default class PokedexBasicInfo extends Component {
                 underlayColor={'#ddd'}
                 onPress={() => onPress(item.name)}  >
                 <View style={styles.list}>
-                  <Text style={styles.textName}> {item.name} </Text>
+                  <Text style={styles.textName}> {this.Capitalize(item.name)} </Text>
                   <Icon
                     style={styles.iconStyle}
                     name='chevron-right'
                     size={20}
                     color='#000000'
-                  />;
+                  />
                 </View>
               </TouchableOpacity>
             )
