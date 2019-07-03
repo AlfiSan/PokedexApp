@@ -25,7 +25,7 @@ export default class PokedexBasicInfo extends Component {
             return (
               <TouchableOpacity 
                 underlayColor={'#ddd'}
-                onPress={() => onPress(item.name)}  >
+                onPress={() => onPress(idFilter !== 5 ? item.pokemon.name: item.name)}  >
                 <View style={styles.list}>
                   <Text style={styles.textName}> 
                   {

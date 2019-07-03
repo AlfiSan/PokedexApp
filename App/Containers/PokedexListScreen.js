@@ -6,16 +6,19 @@ import {
   Image,
   StatusBar,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator, RefreshControl
 } from 'react-native';
 import PokemonList from '../Components/PokedexBasicInfo';
+
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
-import GetListAction from '../Redux/GetListRedux';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
+import { NavigationActions } from 'react-navigation';
+import GetListAction from '../Redux/GetListRedux';
+
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomSheetList from '../Components/BottomSheetList';
+import Immutable from 'seamless-immutable';
 // Styles
 import styles from './Styles/PokedexListScreenStyle'
 
@@ -24,13 +27,12 @@ class PokedexListScreen extends Component {
     super(props);
 
     this.state = {
-      activeSlide: 0,
       pressed: false,
       defaultParams: {offset: 20, limit: 20},
-      filterParams: {},
       idFilter: 5,
       pressedModal: false,
       modalFilter: false,
+      refreshing: false,
       filterList: [
         {id: 1, label: 'Normal'},
         {id: 2, label: 'Fighting'},
@@ -42,7 +44,7 @@ class PokedexListScreen extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(GetListAction.getListRequest(this.state.params, false));
+    this.props.dispatch(GetListAction.getListRequest(this.state.defaultParams, false, false));
   }
 
   onPress = (name) => {
@@ -67,9 +69,9 @@ class PokedexListScreen extends Component {
 
     this.setState({idFilter: id}, () => {
       if(id !== 5) {
-        this.props.dispatch(GetListAction.getListRequest(id, true));
+        this.props.dispatch(GetListAction.getListRequest(id, false, true));
       } else {
-        this.props.dispatch(GetListAction.getListRequest(this.state.params, false));
+        this.props.dispatch(GetListAction.getListRequest(this.state.defaultParams, false, false));
       }
     });
    
@@ -86,9 +88,37 @@ class PokedexListScreen extends Component {
     }
   }
 
+  getMorePokemon = event => {
+    "onScroll" in this.props && this.props.onScroll(event);
+    let paramsOffset = this.state.defaultParams.offset + 20;
+    let params = {offset: paramsOffset, limit: 20}
+    scrollOffset = Number(
+      (
+        event.nativeEvent.layoutMeasurement.height +
+        event.nativeEvent.contentOffset.y
+      ).toFixed(1)
+    );
+    scrollHeight = Number(event.nativeEvent.contentSize.height.toFixed(1));
+    // 200 its depends on activity indicator
+    scrollHeight = scrollHeight - 200;
+
+    if (scrollOffset < scrollHeight) {
+      return;
+    }
+    this.setState(
+      (state) => Immutable.set(state, "defaultParams", params),
+      () => {this.props.dispatch(GetListAction.getListRequest(this.state.defaultParams, true, false))}
+    );
+  };
+
+  getRefreshList = () => {
+    this.props.dispatch(GetListAction.getListRequest(this.state.defaultParams, false, false));
+    this.setState({ refreshing: false });
+  }
+
   render () {
     const {loading, data} = this.props;
-    let {idFilter} = this.state;
+    let {idFilter, refreshing} = this.state;
     const dataPokemon = data && data.results ? data.results : null;
     const dataPokemonFilter = data && data.pokemon ? data.pokemon : null;
 
@@ -124,13 +154,22 @@ class PokedexListScreen extends Component {
               <ActivityIndicator color={"#f1c40f"} />
             </View>
         }
-        <ScrollView contentContainerStyle={styles.viewList}>
+        <ScrollView 
+          contentContainerStyle={styles.viewList}
+          onScroll={this.getMorePokemon}
+          parallaxHeaderHeight={0}
+          refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => this.getRefreshList()}
+          />
+        }>
           <PokemonList
             onPress={this.onPress}
             idFilter={idFilter}
             dataPokemon={idFilter !== 5 ? dataPokemonFilter : dataPokemon}
           />
-        </ScrollView>
+        </ScrollView >
         {/* Filter Pokemon by Type */}
           {ModalFilter}
       </View>

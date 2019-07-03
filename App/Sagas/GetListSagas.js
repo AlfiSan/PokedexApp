@@ -16,7 +16,7 @@ import GetListActions from '../Redux/GetListRedux'
 // import { GetListSelectors } from '../Redux/GetListRedux'
 
 export function * getPokemonList (api, action) {
-  const { data, isFilter } = action
+  const { data, append, isFilter } = action
   let response;
   // get current data from Store
   // const currentData = yield select(GetListSelectors.getData)
@@ -32,7 +32,11 @@ export function * getPokemonList (api, action) {
     if (response.ok) {
       // You might need to change the response here - do this with a 'transform',
       // located in ../Transforms/. Otherwise, just pass the data back from the api.
-      yield put(GetListActions.getListSuccess(response.data))
+      if(append){
+        yield put(GetListActions.getListAppendSuccess(response.data))
+      } else {
+        yield put(GetListActions.getListSuccess(response.data))
+      }
     } else {
       ToastAndroid.show('Maaf terjadi kesalahan pada server',
         ToastAndroid.SHORT

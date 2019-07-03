@@ -4,8 +4,9 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  getListRequest: ['data', 'isFilter'],
+  getListRequest: ['data', 'append', 'isFilter' ],
   getListSuccess: ['payload'],
+  getListAppendSuccess: ['payload'],
   getListFailure: null
 })
 
@@ -31,12 +32,18 @@ export const GetListSelectors = {
 
 // request the data from an api
 export const request = (state, { data }) =>
-  state.merge({ fetching: true, data, payload: null })
+  state.merge({ fetching: true, data})
 
 // successful api lookup
 export const success = (state, action) => {
   const { payload } = action
   return state.merge({ fetching: false, error: null, payload })
+}
+
+//Success Append
+export const appendSuccess = (state, { payload }) => {
+  payload = state.payload.results ? Immutable.setIn(payload, ["results"], state.payload.results.concat(payload.results)) : payload
+  return state.merge({ fetching: false, error: false, payload })
 }
 
 // Something went wrong somewhere.
@@ -48,5 +55,6 @@ export const failure = state =>
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_LIST_REQUEST]: request,
   [Types.GET_LIST_SUCCESS]: success,
+  [Types.GET_LIST_APPEND_SUCCESS]: appendSuccess,
   [Types.GET_LIST_FAILURE]: failure
 })
