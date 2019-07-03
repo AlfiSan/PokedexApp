@@ -15,7 +15,7 @@ export default class PokedexBasicInfo extends Component {
   }
 
   render () {
-    const {dataPokemon, onPress} = this.props;
+    const {dataPokemon, onPress, idFilter} = this.props;
     return (
       <View style={styles.container}>
         <FlatList
@@ -27,7 +27,11 @@ export default class PokedexBasicInfo extends Component {
                 underlayColor={'#ddd'}
                 onPress={() => onPress(item.name)}  >
                 <View style={styles.list}>
-                  <Text style={styles.textName}> {this.Capitalize(item.name)} </Text>
+                  <Text style={styles.textName}> 
+                  {
+                    idFilter !== 5 ? this.Capitalize(item.pokemon.name) : this.Capitalize(item.name)
+                  } 
+                  </Text>
                   <Icon
                     style={styles.iconStyle}
                     name='chevron-right'

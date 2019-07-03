@@ -37,7 +37,7 @@ export default class BottomSheetList extends Component {
           duration={300}
           style={styles.box}>
           <View style={styles.viewTitle}>
-            <Text style={styles.textTitle}>  Filter </Text>
+            <Text style={styles.textTitle}>  Filter By Type </Text>
           </View>
             <FlatList
               data={dataList}

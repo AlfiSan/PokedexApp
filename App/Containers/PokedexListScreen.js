@@ -32,10 +32,10 @@ class PokedexListScreen extends Component {
       pressedModal: false,
       modalFilter: false,
       filterList: [
-        {id: 1, label: 'Fighting'},
-        {id: 2, label: 'Flying'},
-        {id: 3, label: 'Poison'},
-        {id: 4, label: 'Ground'},
+        {id: 1, label: 'Normal'},
+        {id: 2, label: 'Fighting'},
+        {id: 3, label: 'Flying'},
+        {id: 4, label: 'Poison'},
         {id: 5, label: 'See All'}
       ],
     }
@@ -127,7 +127,8 @@ class PokedexListScreen extends Component {
         <ScrollView contentContainerStyle={styles.viewList}>
           <PokemonList
             onPress={this.onPress}
-            dataPokemon={dataPokemon}
+            idFilter={idFilter}
+            dataPokemon={idFilter !== 5 ? dataPokemonFilter : dataPokemon}
           />
         </ScrollView>
         {/* Filter Pokemon by Type */}
