@@ -89,7 +89,7 @@ class PokedexListScreen extends Component {
   }
 
   getMorePokemon = event => {
-    "onScroll" in this.props && this.props.onScroll(event);
+   
     let paramsOffset = this.state.defaultParams.offset + 20;
     let params = {offset: paramsOffset, limit: 20}
     scrollOffset = Number(
