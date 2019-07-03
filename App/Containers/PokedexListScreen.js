@@ -50,7 +50,13 @@ class PokedexListScreen extends Component {
   onPress = (name) => {
     if (!this.state.pressed) {
       this.setState({pressed: true}, () => {
-        alert(name)
+        this.props.dispatch(NavigationActions.navigate({
+          routeName: 'PokedexDetailScreen',
+          params: {
+            name,
+            clearPress: this.clearStatePress.bind(this) 
+          }
+        }));
       });
     }
 

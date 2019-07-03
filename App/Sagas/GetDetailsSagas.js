@@ -21,7 +21,7 @@ export function * getPokemonDetails (api, action) {
   // const currentData = yield select(GetDetailsSelectors.getData)
   // make the call to the api
   try {
-    const response = yield call(api.getPokemon, data)
+    const response = yield call(api.getDetailPokemon, data)
 
     // success?
     if (response.ok) {

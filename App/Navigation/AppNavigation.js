@@ -7,7 +7,11 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
-  PokedexDetailScreen: { screen: PokedexDetailScreen },
+  PokedexDetailScreen: { screen: PokedexDetailScreen,
+    navigationOptions: {
+      header: null,
+    } 
+  },
   PokedexListScreen: { screen: PokedexListScreen, 
     navigationOptions: {
       header: null,
