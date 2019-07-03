@@ -24,7 +24,10 @@ const colors = {
   text: '#E0D7E5',
   yellow: '#f1c40f',
   white: '#fff',
-  black: '#000000'
+  black: '#000000',
+  borderGrey: '#E7E7E7',
+  lblGrey: '#666666',
+  lblGreen: '#02B875',
 }
 
 export default colors

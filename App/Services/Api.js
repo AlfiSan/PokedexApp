@@ -38,6 +38,7 @@ const create = (baseURL = 'https://pokeapi.co/api/v2/') => {
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
   const getPokemon = (params) => api.get('/pokemon/', params);
+  const getByType = (params) => api.get(`/type/${params}/`);
   // ------
   // STEP 3
   // ------
@@ -55,7 +56,8 @@ const create = (baseURL = 'https://pokeapi.co/api/v2/') => {
     getRoot,
     getRate,
     getUser,
-    getPokemon
+    getPokemon,
+    getByType
   }
 }
 

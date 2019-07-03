@@ -16,12 +16,17 @@ import GetListActions from '../Redux/GetListRedux'
 // import { GetListSelectors } from '../Redux/GetListRedux'
 
 export function * getPokemonList (api, action) {
-  const { data } = action
+  const { data, isFilter } = action
+  let response;
   // get current data from Store
   // const currentData = yield select(GetListSelectors.getData)
   // make the call to the api
   try {
-    const response = yield call(api.getPokemon, data)
+    if(isFilter){
+      response = yield call(api.getByType, data)
+    } else {
+      response = yield call(api.getPokemon, data)
+    }
 
     // success?
     if (response.ok) {

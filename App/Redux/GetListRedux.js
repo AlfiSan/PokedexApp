@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  getListRequest: ['data'],
+  getListRequest: ['data', 'isFilter'],
   getListSuccess: ['payload'],
   getListFailure: null
 })
