@@ -14,6 +14,7 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width,
     height: 55,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: Colors.white, 
     borderBottomWidth: 0,
     elevation: 2,           
@@ -28,7 +29,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 16,
     paddingBottom: 16,
-    width: Dimensions.get('window').width,
     alignItems: 'center'
   },
   titleText:{
@@ -38,6 +38,18 @@ export default StyleSheet.create({
     color: Colors.black,
     alignSelf: 'center',
     alignItems: 'center'
+  },
+  viewImage:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    paddingTop: 16,
+    paddingRight: 10,
+    paddingBottom: 16,
+  },
+  imgLogo:{
+    height: 24,
+    width: 24,
   },
   loading: {
     position: 'absolute',

@@ -144,6 +144,13 @@ class PokedexListScreen extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor={"#f1c40f"} translucent={false} barStyle="light" />
         <View style={styles.header}>
+          <View style={styles.viewImage}>
+            <Image
+              style={styles.imgLogo}
+              source={require('../Images/logoPokedex.png')}
+              resizeMode={'contain'}
+            />
+          </View>
           <View style={styles.viewTitle}>
             <Text style={styles.titleText}>
               Pokedex
