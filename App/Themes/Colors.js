@@ -28,6 +28,7 @@ const colors = {
   borderGrey: '#E7E7E7',
   lblGrey: '#666666',
   lblGreen: '#02B875',
+  orange: '#f39c12'
 }
 
 export default colors

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics} from '../../Themes/';
+import { Colors, Metrics, Fonts} from '../../Themes/';
 
 export default StyleSheet.create({
   container: {
@@ -19,8 +19,24 @@ export default StyleSheet.create({
     marginBottom: Metrics.baseMargin,
     padding: Metrics.basePadding,
   },
+  viewName:{
+    flexDirection: 'row',
+    paddingTop: 10,
+    paddingBottom: 10,
+    justifyContent: 'flex-start',
+  },
+  viewImage:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  imgPokeball:{
+    height: 20,
+    width: 20,
+  },
   textName:{
-    fontSize: 14,
+    marginLeft: 16,
+    fontSize: Fonts.size.medium,
     textAlign: 'left',
     color: Colors.black,
     fontWeight: '500'

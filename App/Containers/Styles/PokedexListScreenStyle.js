@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions} from 'react-native';
-import { Colors } from '../../Themes/index';
+import { Colors,Fonts } from '../../Themes/index';
 const { width, height } = Dimensions.get('window')
 
 export default StyleSheet.create({
@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   titleText:{
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: Fonts.size.h4,
     fontWeight: '500',
     color: Colors.black,
     alignSelf: 'center',

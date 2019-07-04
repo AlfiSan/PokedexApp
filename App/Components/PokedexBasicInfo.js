@@ -27,11 +27,21 @@ export default class PokedexBasicInfo extends Component {
                 underlayColor={'#ddd'}
                 onPress={() => onPress(idFilter !== 5 ? item.pokemon.name: item.name)}  >
                 <View style={styles.list}>
-                  <Text style={styles.textName}> 
-                  {
-                    idFilter !== 5 ? this.Capitalize(item.pokemon.name) : this.Capitalize(item.name)
-                  } 
-                  </Text>
+                  <View style={styles.viewName}>
+                    <View style={styles.viewImage}>
+                      <Image
+                        style={styles.imgPokeball}
+                        source={require('../Images/pokeball.png')}
+                        resizeMode={'contain'}
+                      />
+                    </View>
+                    <Text style={styles.textName}> 
+                    {
+                      idFilter !== 5 ? this.Capitalize(item.pokemon.name) : 
+                                       this.Capitalize(item.name)
+                    } 
+                    </Text>
+                  </View>
                   <Icon
                     style={styles.iconStyle}
                     name='chevron-right'

@@ -50,14 +50,14 @@ class PokedexDetailScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={"#f1c40f"} translucent barStyle="light" />
+        <StatusBar backgroundColor={Colors.yellow} translucent barStyle="light" />
         <View style={styles.header}>
           <TouchableOpacity onPress={() => this.goToBack()}>
             <Icon
               style={{alignSelf: 'center'}}
               name='arrow-left'
               size={25}
-              color={'#000000'}
+              color={Colors.black}
             />
           </TouchableOpacity>
           <Text style={styles.textTitle}>
@@ -66,7 +66,7 @@ class PokedexDetailScreen extends Component {
         </View>
         { (loading) &&
             <View style={styles.loading}>
-              <ActivityIndicator color={"#f1c40f"} />
+              <ActivityIndicator color={Colors.yellow} />
             </View>
         }
         <ScrollView contentContainerStyle={styles.viewList} showsVerticalScrollIndicator={false}>

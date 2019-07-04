@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions} from 'react-native';
-import { Colors } from '../../Themes/index';
+import { Colors, Fonts} from '../../Themes/index';
 const { width, height } = Dimensions.get('window')
 
 export default StyleSheet.create({
@@ -70,14 +70,14 @@ export default StyleSheet.create({
     borderBottomColor: Colors.borderGrey
   },
   titleName:{
-    fontSize: 18,
+    fontSize: Fonts.size.input,
     color: Colors.black,
     textAlign: 'center',
     fontWeight: 'bold',
     alignSelf: 'center'
   },
   titleSub:{
-    fontSize: 14,
+    fontSize: Fonts.size.medium,
     color: Colors.black,
     textAlign: 'center',
     alignSelf: 'center'
@@ -95,7 +95,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start'
   },
   titleBold:{
-    fontSize: 32,
+    fontSize: Fonts.size.h2,
     color: Colors.black,
     textAlign: 'center',
     fontWeight: 'bold',
@@ -141,14 +141,14 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
   },
   textTitleBlack:{
-    fontSize: 16,
+    fontSize: Fonts.size.regular,
     color: Colors.black,
     textAlign: 'center',
     fontWeight: 'bold',
     alignSelf: 'center'
   },
   textValueBlack:{
-    fontSize: 16,
+    fontSize: Fonts.size.regular,
     color: Colors.black,
     textAlign: 'center',
     alignSelf: 'center'

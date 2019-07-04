@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 // import YourActions from '../Redux/YourRedux'
 import { NavigationActions } from 'react-navigation';
 import GetListAction from '../Redux/GetListRedux';
-
+import { Colors } from '../Themes/index';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomSheetList from '../Components/BottomSheetList';
 import Immutable from 'seamless-immutable';
@@ -142,7 +142,7 @@ class PokedexListScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={"#f1c40f"} translucent={false} barStyle="light" />
+        <StatusBar backgroundColor={Colors.yellow} translucent={false} barStyle="light" />
         <View style={styles.header}>
           <View style={styles.viewImage}>
             <Image
@@ -161,13 +161,13 @@ class PokedexListScreen extends Component {
               style={{alignSelf: 'center'}}
               name='filter-variant'
               size={20}
-              color={this.state.idFilter !== 5 ? '#f39c12' : '#000000'}
+              color={this.state.idFilter !== 5 ? Colors.orange : Colors.black}
             />
           </TouchableOpacity>
         </View>
         { (loading) &&
             <View style={styles.loading}>
-              <ActivityIndicator color={"#f1c40f"} />
+              <ActivityIndicator color={Colors.yellow} />
             </View>
         }
         <ScrollView 

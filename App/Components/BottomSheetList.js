@@ -47,7 +47,7 @@ export default class BottomSheetList extends Component {
               <TouchableOpacity 
                 style={[styles.rowList, data.id == 5 && {borderBottomWidth: 0}]}
                 onPress={() => onPress(data.id)}>
-                  <Text style={[styles.textDesc, idFilter == data.id && {color: Colors.lblGreen} ]}>
+                  <Text style={[styles.textDesc, idFilter == data.id && {color: Colors.yellow} ]}>
                     {data.label}
                   </Text>
               </TouchableOpacity>
