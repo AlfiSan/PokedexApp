@@ -3,6 +3,7 @@
 
 * Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
 
+
 ## :arrow_up: How to Setup
 
 **Step 1:** git clone this repo:
@@ -10,6 +11,8 @@
 **Step 2:** cd to the cloned repo:
 
 **Step 3:** Install the Application with `yarn` or `npm i`
+
+**Note:** Better using node js version > 10 to support React Native 0.59.9
 
 
 ## :arrow_forward: How to Run App
